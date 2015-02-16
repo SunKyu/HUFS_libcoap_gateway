@@ -1185,24 +1185,9 @@ run(int argc, char **argv) {
 
 
 int main (int argc, char* argv[]){
-  int cargc =6;
-  char *cargv[6];
-  char cargv1 [5] = "-m";
-
-  char cargv2 [10] = "get";
-  char cargv3 [5] = "-o";
-  char cargv4 [20] = "result.txt";
-  char cargv5 [50] = "coap://[aaaa::0212:7400:15d5:a731]/sensors?addr=8007,type=all";
-  run(argc, argv);
-  cargv[0] = argv[0];
-  cargv[1] = argv[1];
-  cargv[2] = argv[2];
-  cargv[3] = argv[3];
-  cargv[4] = argv[4];
-  cargv[5] = cargv[5];
-  argv[5] = "coap://[aaaa::0212:7400:15d5:a731]/sensors?addr=8007,type=all";
-  run(argc, argv);
-
+              run(argc, argv);
+                            argv[7] = "coap://[aaaa::8]/sensors?addr=8007,type=all";
+                              run(argc, argv);
 
 
 }
