@@ -933,7 +933,7 @@ get_context(const char *node, const char *port) {
 }
 
 int
-main(int argc, char **argv) {
+run(int argc, char **argv) {
   coap_context_t  *ctx = NULL;
   coap_address_t dst;
   static char addr[INET6_ADDRSTRLEN];
@@ -1181,4 +1181,15 @@ main(int argc, char **argv) {
   coap_free_context( ctx );
 
   return 0;
+}
+
+
+int main (int argc, char* argv[]){
+  
+
+  run(argc, argv);
+  run(argc, argv);
+
+
+
 }
