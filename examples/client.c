@@ -1186,7 +1186,7 @@ run(int argc, char **argv) {
 
 int main (int argc, char* argv[]){
               run(argc, argv);
-                            argv[7] = "coap://[aaaa::8]/sensors?addr=8007,type=all";
+                            argv[7] = "coap://[localhost]/sensors?addr=8007,type=all";
                               run(argc, argv);
 
 
