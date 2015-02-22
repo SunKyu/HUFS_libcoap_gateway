@@ -1,0 +1,12 @@
+301/aaaa::0001/0000/Temp/
+302/aaaa::0001/0000/Humid/
+303/aaaa::0001/0001/Temp/
+304/aaaa::0001/0001/Humid/
+305/aaaa::0001/0002/Temp/
+306/aaaa::0001/0002/Humid/
+307/aaaa::000f/0000/Temp/
+308/aaaa::000f/0000/Humid/
+309/aaaa::000f/0003/Temp/
+310/aaaa::000f/0003/Humid/
+311/aaaa::000f/0005/Temp/
+312/aaaa::000f/0005/Humid/
