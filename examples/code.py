@@ -1,7 +1,6 @@
 import subprocess, os
 import sys
 
-i = 3
 f = open("table.txt",'r')
 cycle =10
 while 1: 
@@ -13,7 +12,7 @@ while 1:
     continue
   linetable = line.split('/')
   url = "coap://[%s]/sensors?addr=%s,type=%s" %(linetable[1], linetable[2], linetable[3])
-  arg = ["-m", "get" ,"-o", "result.txt","-B","3", url]
+  arg = ["-m", "get" ,"-B","3", url, linetable[0]]
   arg.append(url)
   pathname = os.path.dirname(sys.argv[0])
   path = os.path.abspath(pathname)
@@ -23,4 +22,3 @@ while 1:
   p = subprocess.Popen([path]+ arg)
   p.wait()
   print "End of Execution"
-  i = i-1

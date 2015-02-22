@@ -1184,9 +1184,15 @@ run(int argc, char **argv) {
 }
 
 int main (int argc, char *argv[]){
+  int cargc = 5;
+  char *cargv[];
+  cargv[0]= argv[0];
+  cargv[1] = argv[1];
+  cargv[2] = argv[2];
+  cargv[3] = argv[3];
+  cargv[4] = argv[4];
 
-
-  run(argc, argv);
+  run(cargc, cargv);
 
 
 
@@ -1209,7 +1215,7 @@ int main (int argc, char *argv[]){
     /* Now specify the POST data */ 
     curl_easy_setopt(curl, CURLOPT_POST, 1);
     curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "{\"tag_id\":\"901\",\"tag_value\":\"70.86\"}");
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "{\"tag_id\":\"%s\",\"tag_value\":\"70.86\"}", argv[5]);
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headerlist);
     /* Perform the request, res will get the return code */ 
     res = curl_easy_perform(curl);
