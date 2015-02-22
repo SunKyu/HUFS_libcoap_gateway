@@ -7,6 +7,6 @@ path = os.path.abspath(pathname)
 path = path + "/coap-client"
 print path
 
-p = subprocess.Popen([path, arg ])
+p = subprocess.Popen([path]+ arg)
 
 print "End of Execution"
