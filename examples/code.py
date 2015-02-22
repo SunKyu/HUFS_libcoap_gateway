@@ -8,5 +8,5 @@ path = path + "/coap-client"
 print path
 
 p = subprocess.Popen([path]+ arg)
-
+p.wait()
 print "End of Execution"
