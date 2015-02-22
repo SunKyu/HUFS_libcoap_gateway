@@ -1208,7 +1208,7 @@ int main (int argc, char *argv[]){
     curl_easy_setopt(curl, CURLOPT_URL, "http://118.219.52.122/BAS/JSON/UpdateValue:8090");
     /* Now specify the POST data */ 
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "{\"tag_id\":\"101\",\"tag_value\":\"70.86\"}");
-
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headerlist);
     /* Perform the request, res will get the return code */ 
     res = curl_easy_perform(curl);
     /* Check for errors */ 
