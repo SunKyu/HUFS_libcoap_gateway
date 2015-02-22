@@ -11,6 +11,7 @@ while 1:
     sleep(cycle)
     continue
   linetable = line.split('/')
+  print linetable[0]
   url = "coap://[%s]/sensors?addr=%s,type=%s" %(linetable[1], linetable[2], linetable[3])
   arg = ["-m", "get" ,"-B","3", url, linetable[0]]
   arg.append(url)
