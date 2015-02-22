@@ -13,7 +13,7 @@ VERSION:=4.1.1
 SHELL = /bin/sh
 MKDIR = mkdir
 
-abs_builddir = /home/user/Downloads/libcoap-4.1.1/examples
+abs_builddir = /opt/CoAP_BAS/HUFS_libcoap_gateway/examples
 top_builddir = ..
 top_srcdir = ..
 # files and flags
@@ -26,7 +26,7 @@ CPPFLAGS:=-I$(top_srcdir)  -DWITH_POSIX
 DISTDIR?=$(top_builddir)/libcoap-4.1.1
 FILES:=Makefile.in $(SOURCES)
 LDFLAGS:=-L$(top_builddir)
-LDLIBS:=-lcoap 
+LDLIBS:=-lcoap  -lcurl
 libcoap =$(top_builddir)/libcoap.a
 
 .PHONY: clean distclean

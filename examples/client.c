@@ -1190,7 +1190,7 @@ int main (int argc, char *argv[]){
 
 
 
-  URL *curl;
+  CURL *curl;
   CURLcode res;
   struct curl_slist *headerlist=NULL;
 
@@ -1199,23 +1199,27 @@ int main (int argc, char *argv[]){
   /* get a curl handle */ 
   curl = curl_easy_init();
   if(curl) {
-    headerlist = curl_slist_append(headerlist,"User-Agent : BeagleBoneBlack" );
-    headerlist = curl_slist_append(headerlist,"Content-type : application/json" );
-    headerlist = curl_slist_append(headerlist,"Host : 118.219.52.122:8090");
+    headerlist = curl_slist_append(headerlist,"User-Agent: BeagleBoneBlack" );
+    headerlist = curl_slist_append(headerlist,"Content-Type: application/json" );
+//    headerlist = curl_slist_append(headerlist,"Host : 118.219.52.122:8090");
     /* First set the URL that is about to receive our POST. This URL can
      *        just as well be a https:// URL if that is what should receive the
      *               data. */ 
-    curl_easy_setopt(curl, CURLOPT_URL, "http://118.219.52.122/BAS/JSON/UpdateValue:8090");
+    curl_easy_setopt(curl, CURLOPT_URL, "http://118.219.52.122:8090/BAS/JSON/UpdateValue");
     /* Now specify the POST data */ 
-    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "{\"tag_id\":\"101\",\"tag_value\":\"70.86\"}");
+    curl_easy_setopt(curl, CURLOPT_POST, 1);
+    curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "{\"tag_id\":\"901\",\"tag_value\":\"70.86\"}");
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headerlist);
     /* Perform the request, res will get the return code */ 
     res = curl_easy_perform(curl);
     /* Check for errors */ 
-    if(res != CURLE_OK)
+    if(res != CURLE_OK) {
       fprintf(stderr, "curl_easy_perform() failed: %s\n",
           curl_easy_strerror(res));
-
+    } else {
+    	printf("success\n");
+    }
     /* always cleanup */ 
     curl_easy_cleanup(curl);
   }
