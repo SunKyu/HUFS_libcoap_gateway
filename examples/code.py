@@ -4,7 +4,7 @@ import sys
 i = 3
 f = open("table.txt",'r')
 cycle =10
-while i: 
+while 1: 
   line = f.readline()
   if not line:
     f.seek(0)
