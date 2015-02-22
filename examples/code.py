@@ -8,7 +8,7 @@ while 1:
   if not line:
     f.seek(0)
     print "cycle time is %d" %cycle
-    sleep(cycle)
+    time.sleep(cycle)
     continue
   linetable = line.split('/')
   url = "coap://[%s]/sensors?addr=%s,type=%s" %(linetable[1], linetable[2], linetable[3])
