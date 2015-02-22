@@ -12,8 +12,9 @@ while i:
     sleep(cycle)
     continue
   linetable = line.split('/')
-  url = "coap://[%s]/sensors?addr=%s,type=%s" %(linetable[1], linetable[3], linetable[3]
+  url = "coap://[%s]/sensors?addr=%s,type=%s" %(linetable[1], linetable[3], linetable[3])
   arg = ["-m", "get" ,"-o", "result.txt","-B","3", url]
+  arg.append(url)
   pathname = os.path.dirname(sys.argv[0])
   path = os.path.abspath(pathname)
   path = path + "/coap-client"
