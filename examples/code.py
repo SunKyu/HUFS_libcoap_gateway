@@ -6,7 +6,6 @@ pathname = os.path.dirname(sys.argv[0])
 path = os.path.abspath(pathname)
 path = path + "/coap-client"
 print path
->>>>>>> e45f03ed49db12b808a6ad8b50084c8b6ac187b1
 
 p = subprocess.Popen([path]+ arg)
 p.wait()
