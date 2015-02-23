@@ -13,7 +13,7 @@ VERSION:=4.1.1
 SHELL = /bin/sh
 MKDIR = mkdir
 
-abs_builddir = /opt/CoAP_BAS/HUFS_libcoap_gateway/examples
+abs_builddir = /opt/HUFS_libcoap_gateway/examples
 top_builddir = ..
 top_srcdir = ..
 # files and flags
