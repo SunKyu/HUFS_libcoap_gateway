@@ -27,5 +27,6 @@ you should change the `examples/code.py` that script has argumnet
   
 3. when you need to change **tag_id**, **coap_address** and **sensor_type**, you shoud modify table.txt
   
+4. The BAS Server **can't** receive the data of Seonsor's **location** type 
 
 author SunKyu Lee
