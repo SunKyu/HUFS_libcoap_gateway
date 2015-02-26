@@ -24,7 +24,7 @@
 #include "coap.h"
 
 int flags = 0;
-char recv_data[30];
+char recv_data[60];
 static unsigned char _token_data[8];
 str the_token = { 0, _token_data };
 
@@ -77,7 +77,7 @@ append_to_output(const unsigned char *data, size_t len) {
   recv_final = strtok(recv_data, "=");
   recv_final = strtok(NULL, "=");
   strcpy(recv_data, recv_final);
-  //na end
+ //na end
   if (!file) {
     if (!output_file.s || (output_file.length && output_file.s[0] == '-')) 
       file = stdout;
@@ -940,7 +940,6 @@ finish:
 
 int
 run(int argc, char **argv) {
-  printf("RRRRRRRRRRUUUUUUUUUUUUUUUNNNNNNNNNNNNNNNNNN\n");
   coap_context_t  *ctx = NULL;
   coap_address_t dst;
   static char addr[INET6_ADDRSTRLEN];
@@ -1117,7 +1116,6 @@ run(int argc, char **argv) {
     coap_show_pdu(pdu);
   }
 #endif
-
   if (pdu->hdr->type == COAP_MESSAGE_CON)
     tid = coap_send_confirmed(ctx, &dst, pdu);
   else 
@@ -1186,12 +1184,10 @@ run(int argc, char **argv) {
   close_output();
 
   coap_free_context( ctx );
-  printf("EEEEEEEEEEEEENNNNNNNNNNNNNNNDDDDDDDDDDDDD\n");
   return 0;
 }
 
 void httppost(char data[]){
-  printf("I AM HTTP POST!!!!!!\n");
   CURL *curl;
   CURLcode res;
   struct curl_slist *headerlist=NULL;
@@ -1242,8 +1238,7 @@ int main (int argc, char *argv[]){
   char data[60] = {0,};
   run(cargc, cargv); 
  sprintf(data,"{\"tag_id\":\"%s\",\"tag_value\":\"%s\"}", argv[6], recv_data);
-//  run(cargc, cargv);
-  httppost(data);
+ httppost(data);
 
   return 0;
 
