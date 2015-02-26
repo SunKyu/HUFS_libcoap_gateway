@@ -17,8 +17,8 @@ abs_builddir = @abs_builddir@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 # files and flags
-PROGRAMS:=coap-server coap-client rd etsi_iot_01 #tiny
-SOURCES:= tiny.c client.c server.c rd.c etsi_iot_01.c
+PROGRAMS:= coap-client #tiny
+SOURCES:= client.c 
 OBJECTS:= $(patsubst %.c, %.o, $(SOURCES))
 #CFLAGS:=-g -Wall -ansi -pedantic -I..
 CFLAGS:=-g -Wall @CFLAGS@
@@ -40,14 +40,10 @@ check:
         echo DISTDIR: $(DISTDIR)
         echo top_builddir: $(top_builddir)
 
-tiny:   tiny.o $(libcoap)
-        $(CC) -o $@ $< $(LDFLAGS)
 
 coap-client: client.o $(libcoap)
         $(CC) -o $@ $< $(LDFLAGS) $(LDLIBS)
 
-coap-server:    server.o $(libcoap)
-        $(CC) -o $@ $< $(LDFLAGS) $(LDLIBS)
 
 clean:
         @rm -f $(PROGRAMS) $(OBJECTS)
