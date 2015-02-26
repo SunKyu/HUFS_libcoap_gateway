@@ -24,7 +24,7 @@
 #include "coap.h"
 
 int flags = 0;
-
+char recv_data[30];
 static unsigned char _token_data[8];
 str the_token = { 0, _token_data };
 
@@ -71,7 +71,13 @@ append_to_output(const unsigned char *data, size_t len) {
   size_t written;
   // iskim
   char EndChars[] = "\r\n";
-
+  char *recv_final;
+  //is na
+  strcpy(recv_data, data);
+  recv_final = strtok(recv_data, "=");
+  recv_final = strtok(NULL, "=");
+  strcpy(recv_data, recv_final);
+  //na end
   if (!file) {
     if (!output_file.s || (output_file.length && output_file.s[0] == '-')) 
       file = stdout;
@@ -934,6 +940,7 @@ finish:
 
 int
 run(int argc, char **argv) {
+  printf("RRRRRRRRRRUUUUUUUUUUUUUUUNNNNNNNNNNNNNNNNNN\n");
   coap_context_t  *ctx = NULL;
   coap_address_t dst;
   static char addr[INET6_ADDRSTRLEN];
@@ -1179,12 +1186,12 @@ run(int argc, char **argv) {
   close_output();
 
   coap_free_context( ctx );
-
+  printf("EEEEEEEEEEEEENNNNNNNNNNNNNNNDDDDDDDDDDDDD\n");
   return 0;
 }
 
 void httppost(char data[]){
-
+  printf("I AM HTTP POST!!!!!!\n");
   CURL *curl;
   CURLcode res;
   struct curl_slist *headerlist=NULL;
@@ -1213,7 +1220,7 @@ void httppost(char data[]){
       fprintf(stderr, "curl_easy_perform() failed: %s\n",
           curl_easy_strerror(res));
     } else {
-    	printf("success\n");
+    	printf("\npost success\n");
     }
     /* always cleanup */ 
     curl_easy_cleanup(curl);
@@ -1233,52 +1240,11 @@ int main (int argc, char *argv[]){
   cargv[5] = argv[5];
   printf("check\n");
   char data[60] = {0,};
-  sprintf(data,"{\"tag_id\":\"%s\",\"tag_value\":\"70.86\"}", argv[6]);
-  run(cargc, cargv);
+  run(cargc, cargv); 
+ sprintf(data,"{\"tag_id\":\"%s\",\"tag_value\":\"%s\"}", argv[6], recv_data);
+//  run(cargc, cargv);
   httppost(data);
-/*
 
-  CURL *curl;
-  CURLcode res;
-  struct curl_slist *headerlist=NULL;
-
-  curl_global_init(CURL_GLOBAL_ALL);
-*/
-  /* get a curl handle */ 
- /* curl = curl_easy_init();
-  if(curl) {
-    headerlist = curl_slist_append(headerlist,"User-Agent: BeagleBoneBlack" );
-    headerlist = curl_slist_append(headerlist,"Content-Type: application/json" );
-*/
-  //    headerlist = curl_slist_append(headerlist,"Host : 118.219.52.122:8090");
-    /* First set the URL that is about to receive our POST. This URL can
-     *        just as well be a https:// URL if that is what should receive the
-     *               data. */ 
-  //  curl_easy_setopt(curl, CURLOPT_URL, "http://118.219.52.122:8090/BAS/JSON/UpdateValue");
-    /* Now specify the POST data */ 
-  /*
-    curl_easy_setopt(curl, CURLOPT_POST, 1);
-    curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data);
-    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headerlist);
-  */  
-  /* Perform the request, res will get the return code */ 
-  //  res = curl_easy_perform(curl);
-    /* Check for errors */ 
-    /*
-    if(res != CURLE_OK) {
-      fprintf(stderr, "curl_easy_perform() failed: %s\n",
-          curl_easy_strerror(res));
-    } else {
-    	printf("success\n");
-    }
-    */
-    /* always cleanup */
-  /*
-    curl_easy_cleanup(curl);
-  }
-  curl_global_cleanup();
-  */
   return 0;
 
 }
