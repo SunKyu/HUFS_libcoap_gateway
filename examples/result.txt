@@ -1,4 +1,0 @@
-7001,temp=25.34,humi=73,light=312,co2=1150,batt=3.1
-7002,temp=25.34,humi=73,light=312,co2=1150,batt=3.1
-8002,temp=25.34,humi=73,light=312,co2=1150,batt=3.1
-8003,temp=25.34,humi=73,light=312,co2=1150,batt=3.1
