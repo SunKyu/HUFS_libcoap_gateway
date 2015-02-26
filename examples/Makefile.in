@@ -37,21 +37,21 @@ libcoap =$(top_builddir)/libcoap.a
 all:    $(PROGRAMS)
 
 check:  
-        echo DISTDIR: $(DISTDIR)
-        echo top_builddir: $(top_builddir)
+	echo DISTDIR: $(DISTDIR)
+	echo top_builddir: $(top_builddir)
 
 
 coap-client: client.o $(libcoap)
-        $(CC) -o $@ $< $(LDFLAGS) $(LDLIBS)
+	$(CC) -o $@ $< $(LDFLAGS) $(LDLIBS)
 
 
 clean:
-        @rm -f $(PROGRAMS) $(OBJECTS)
+	@rm -f $(PROGRAMS) $(OBJECTS)
 
 distclean:      clean
-        @rm -rf $(DISTDIR)
-        @rm -f *~ 
+	@rm -rf $(DISTDIR)
+	@rm -f *~ 
 
 dist:   $(FILES)
-        test -d $(DISTDIR)/examples || mkdir $(DISTDIR)/examples
-        cp $(FILES) $(DISTDIR)/examples
+	test -d $(DISTDIR)/examples || mkdir $(DISTDIR)/examples
+	cp $(FILES) $(DISTDIR)/examples
