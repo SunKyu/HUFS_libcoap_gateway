@@ -16,9 +16,12 @@ $ sudo python code.py [cycle time]
 # The program send value to BAS every 30 seconds  
 ```
 ##issue  
-if you want coap-clinet's argument    
+1. if you want coap-clinet's argument    
 you should change the `examples/code.py` that script has argumnet    
-if you need change the number of argumnet of copa-client, `client.c` main funciton shoud be modify   
-
+  
+2. if you need change the number of argumnet of copa-client, `client.c` main funciton shoud be modify   
+  
+3. when you need to change **tag_id**, **coap_address** and **sensor_type**, you shoud modify table.txt
+  
 
 author SunKyu Lee
