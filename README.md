@@ -25,6 +25,8 @@ $ cd examples
 $ sudo cp code.sh /etc/init.d/  
 $ sudo sudo update-rc.d code.sh defaults  
 ```
+    
+**you must change line 19 of `code.sh`** depnding on file's path 
 and then `sudo reboot` or `sudo service code.sh start`  
 `ps aux | grep code`
 
