@@ -14,7 +14,7 @@ $ sudo make
 ##Run the Porogram 
 ```
 $ cd examples  
-$ sudo python code.py [cycle time]  
+$ sudo python code.py [cycle time] [BAS_IP]   
 # ex) sudo python code.py 30   
 # The program send value to BAS every 30 seconds  
 ```
