@@ -28,4 +28,3 @@ you should change the `examples/code.py` that script has argumnet
   
 4. The BAS Server **can't** receive the data of Seonsor's **location** type 
 
-author SunKyu Lee
