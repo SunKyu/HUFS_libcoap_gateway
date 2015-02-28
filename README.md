@@ -18,6 +18,16 @@ $ sudo python code.py [cycle time] [BAS_IP]
 # ex) sudo python code.py 30   
 # The program send value to BAS every 30 seconds  
 ```
+
+##Add the Daemon to `/etc/init.d`
+```
+$ cd examples  
+$ sudo cp code.sh /etc/init.d/  
+$ sudo sudo update-rc.d code.sh defaults  
+```
+and then `sudo reboot` or `sudo service code.sh start`  
+`ps aux | grep code`
+
 ##issue  
 1. if you want coap-clinet's argument    
 you should change the `examples/code.py` that script has argumnet    
