@@ -1190,8 +1190,8 @@ run(int argc, char **argv) {
 void httppost(char tag_id[], char BAS_IP []){
   CURL *curl;
   CURLcode res;
-  char url[90] = {0,}
-  char data[60] = {0,}
+  char url[90] = {0,};
+  char data[60] = {0,};
   struct curl_slist *headerlist=NULL;
   sprintf(url, "http://%s/BAS/JSON/UpdateValue", BAS_IP);
   sprintf(data,"{\"tag_id\":\"%s\",\"tag_value\":\"%s\"}", tag_id, recv_data);
