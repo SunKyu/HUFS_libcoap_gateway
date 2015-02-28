@@ -24,7 +24,7 @@
 #include "coap.h"
 
 int flags = 0;
-char recv_data[60];
+char recv_data[60] = {0,};
 static unsigned char _token_data[8];
 str the_token = { 0, _token_data };
 
@@ -1187,11 +1187,15 @@ run(int argc, char **argv) {
   return 0;
 }
 
-void httppost(char data[]){
+void httppost(char tag_id[], char BAS_IP []){
   CURL *curl;
   CURLcode res;
+  char url[90] = {0,}
+  char data[60] = {0,}
   struct curl_slist *headerlist=NULL;
-
+  sprintf(url, "http://%s/BAS/JSON/UpdateValue", BAS_IP);
+  sprintf(data,"{\"tag_id\":\"%s\",\"tag_value\":\"%s\"}", tag_id, recv_data);
+  //need to add the default data of recv_data
   curl_global_init(CURL_GLOBAL_ALL);
 
   /* get a curl handle */ 
@@ -1203,7 +1207,7 @@ void httppost(char data[]){
     /* First set the URL that is about to receive our POST. This URL can
      *        just as well be a https:// URL if that is what should receive the
      *               data. */ 
-    curl_easy_setopt(curl, CURLOPT_URL, "http://118.219.52.122:8090/BAS/JSON/UpdateValue");
+    curl_easy_setopt(curl, CURLOPT_URL, url);
     /* Now specify the POST data */ 
     curl_easy_setopt(curl, CURLOPT_POST, 1);
     curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
@@ -1227,6 +1231,7 @@ void httppost(char data[]){
 
 int main (int argc, char *argv[]){
   int cargc = 6;
+  char BAS_IP[40] = {0,}
   char *cargv[6];
   cargv[0]= argv[0];
   cargv[1] = argv[1];
@@ -1234,11 +1239,12 @@ int main (int argc, char *argv[]){
   cargv[3] = argv[3];
   cargv[4] = argv[4];
   cargv[5] = argv[5];
-  printf("check\n");
-  char data[60] = {0,};
+  char tag_id[15] = {0,};
+  
   run(cargc, cargv); 
- sprintf(data,"{\"tag_id\":\"%s\",\"tag_value\":\"%s\"}", argv[6], recv_data);
- httppost(data);
+  sprintf(tag_id,"%s", argv[6]);
+  sprintf(BAS_IP,"%s", argv[7]);
+  httppost(data, BAS_IP);
 
   return 0;
 
