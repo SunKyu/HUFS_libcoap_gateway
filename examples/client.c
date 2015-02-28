@@ -1239,7 +1239,7 @@ int main (int argc, char *argv[]){
   cargv[4] = argv[4];
   cargv[5] = argv[5];
   char tag_id[15] = {0,};
-  char BAS_IP[40] = {0,}
+  char BAS_IP[40] = {0,};
   
   run(cargc, cargv); 
   sprintf(tag_id,"%s", argv[6]);
