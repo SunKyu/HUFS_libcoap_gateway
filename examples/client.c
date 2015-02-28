@@ -1231,7 +1231,6 @@ void httppost(char tag_id[], char BAS_IP []){
 
 int main (int argc, char *argv[]){
   int cargc = 6;
-  char BAS_IP[40] = {0,}
   char *cargv[6];
   cargv[0]= argv[0];
   cargv[1] = argv[1];
@@ -1240,11 +1239,12 @@ int main (int argc, char *argv[]){
   cargv[4] = argv[4];
   cargv[5] = argv[5];
   char tag_id[15] = {0,};
+  char BAS_IP[40] = {0,}
   
   run(cargc, cargv); 
   sprintf(tag_id,"%s", argv[6]);
   sprintf(BAS_IP,"%s", argv[7]);
-  httppost(data, BAS_IP);
+  httppost(tag_id, BAS_IP);
 
   return 0;
 
