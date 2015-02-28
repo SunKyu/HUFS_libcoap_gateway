@@ -1,7 +1,13 @@
+#!/usr/bin python
+
 import subprocess, os
 import sys
 import time
-f = open("table.txt",'r')
+
+pathname = os.path.dirname(sys.argv[0])
+path = os.path.abspath(pathname)
+tablepath = path + "/table.txt"
+f = open(tablepath,'r')
 cycle = int(sys.argv[1])
 BAS_IP = str(sys.argv[2])
 while 1:
@@ -15,8 +21,6 @@ while 1:
   linetable = line.split('/')
   url = "coap://[%s]/sensors?addr=%s,type=%s" %(linetable[1], linetable[2], linetable[3])
   arg = ["-m", "get" ,"-o","result.txt", url, linetable[0], BAS_IP]
-  pathname = os.path.dirname(sys.argv[0])
-  path = os.path.abspath(pathname)
   path = path + "/coap-client"
   print path
 
